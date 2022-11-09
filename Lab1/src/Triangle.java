@@ -7,6 +7,11 @@ public class Triangle extends Figure {
         points = new Point[3];
     }
 
+    public Triangle (double x1, double y1, double x2, double y2, double x3, double y3) {
+        Point[] points = new Point[]{new Point(x1, y1), new Point(x2, y2), new Point(x3, y3)};
+        setPoints(points);
+    }
+
     public Triangle(Point[] points) {
         setPoints(points);
     }

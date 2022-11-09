@@ -15,16 +15,8 @@ public class Main {
         }
 
         for (var key : sortedTriangles.keySet()) {
-            System.out.println(key);
-            System.out.println(sortedTriangles.get(key));
-            System.out.println("--------");
+            System.out.println(String.format("%s: %d", key, sortedTriangles.get(key).size()));
         }
-
-
-        //sortedTriangles.get(TriangleTypes.EQUILATERAL).add(triangles.get(0));
-        //sortedTriangles.get(TriangleTypes.EQUILATERAL).add(triangles.get(1));
-
-        //System.out.println(sortedTriangles.get(TriangleTypes.EQUILATERAL));
 
     }
 
@@ -37,13 +29,13 @@ public class Main {
 
     public static ArrayList<Triangle> GenerateBaseDataCollection() {
         ArrayList<Triangle> triangles = new ArrayList<Triangle>();
-        triangles.add(TriangleBuilder.Build(5,0,0,0,1.8,2.4));
-        triangles.add(TriangleBuilder.Build(1,1,1,2,3,3));
-        triangles.add(TriangleBuilder.Build(1,1,3,1,2,5));
-        triangles.add(TriangleBuilder.Build(1,5,2,1,3,5));
-        triangles.add(TriangleBuilder.Build(52,11,34,21,78,1));
-        triangles.add(TriangleBuilder.Build(2,2,4,4,-6,6));
-        triangles.add(TriangleBuilder.Build(5,0,0,0,2.5,4.33));
+        triangles.add(new Triangle(5,0,0,0,1.8,2.4));
+        triangles.add(new Triangle(1,1,1,2,3,3));
+        triangles.add(new Triangle(1,1,3,1,2,5));
+        triangles.add(new Triangle(1,5,2,1,3,5));
+        triangles.add(new Triangle(52,11,34,21,78,1));
+        triangles.add(new Triangle(2,2,4,4,-6,6));
+        triangles.add(new Triangle(5,0,0,0,2.5,4.33));
         return triangles;
     }
 
