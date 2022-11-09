@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Point implements Cloneable {
     private double x;
     private double y;
@@ -37,5 +39,13 @@ public class Point implements Cloneable {
     public Point clone() {
         Point clone = new Point(this.getX(), this.getY());
         return clone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return this.x == point.getX() && this.y == y;
     }
 }

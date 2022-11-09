@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Triangle extends Figure {
     private Point[] points;
 
@@ -35,6 +37,13 @@ public class Triangle extends Figure {
     }
 
     @Override
+    public String toString() {
+        return "Triangle{" +
+                "points=" + Arrays.toString(points) +
+                '}';
+    }
+
+    @Override
     public double getPerimeter() {
         double result = 0;
         for (int i = 0; i < 3; i++) {
@@ -44,5 +53,14 @@ public class Triangle extends Figure {
             result += lineLength;
         }
         return result;
+    }
+
+    public double[] getSides() {
+        double[] sides = new double[3];
+        for (int i = 0; i < 3; i++) {
+            sides[i] = Math.sqrt(Math.pow(points[(i + 1) % 3].getX() - points[i].getX(), 2) +
+                    Math.pow(points[(i + 1) % 3].getY() - points[i].getY(), 2));
+        }
+        return sides;
     }
 }
