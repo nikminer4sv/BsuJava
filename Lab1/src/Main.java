@@ -3,31 +3,44 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        HashMap<TriangleTypes, ArrayList<Triangle>> sortedTriangles = GenerateTrianglesMap();
+        HashMap<TriangleTypes, ArrayList<Triangle>> sortedTriangles = generateTrianglesMap();
 
-        ArrayList<Triangle> triangles = GenerateBaseDataCollection();
+        ArrayList<Triangle> triangles = generateBaseDataCollection();
         for (var element : triangles.get(0).getSides())
             System.out.println(element);
 
         for (Triangle triangle : triangles) {
-            TriangleTypes type = DetectTriangleType(triangle);
+            TriangleTypes type = detectTriangleType(triangle);
             sortedTriangles.get(type).add(triangle);
         }
 
         for (var key : sortedTriangles.keySet()) {
             System.out.println(String.format("%s: %d", key, sortedTriangles.get(key).size()));
+            ArrayList<Triangle> temp = sortedTriangles.get(key);
+            Collections.sort(temp, new triangleAreaComparator());
+            System.out.println("Max area: ");
+            System.out.println(temp.get(temp.size() - 1));
+            System.out.println("Min area: ");
+            System.out.println(temp.get(0));
+
+            Collections.sort(temp, new trianglePerimeterComparator());
+            System.out.println("Max perimeter: ");
+            System.out.println(temp.get(temp.size() - 1));
+            System.out.println("Min perimeter: ");
+            System.out.println(temp.get(0));
+            System.out.println("-------------");
         }
 
     }
 
-    public static HashMap<TriangleTypes, ArrayList<Triangle>> GenerateTrianglesMap() {
+    public static HashMap<TriangleTypes, ArrayList<Triangle>> generateTrianglesMap() {
         HashMap<TriangleTypes, ArrayList<Triangle>> map = new HashMap<>();
         for (var type : TriangleTypes.values())
             map.put(type, new ArrayList<>());
         return map;
     }
 
-    public static ArrayList<Triangle> GenerateBaseDataCollection() {
+    public static ArrayList<Triangle> generateBaseDataCollection() {
         ArrayList<Triangle> triangles = new ArrayList<Triangle>();
         triangles.add(new Triangle(5,0,0,0,1.8,2.4));
         triangles.add(new Triangle(1,1,1,2,3,3));
@@ -39,7 +52,7 @@ public class Main {
         return triangles;
     }
 
-    public static TriangleTypes DetectTriangleType(Triangle triangle) {
+    public static TriangleTypes detectTriangleType(Triangle triangle) {
         // need for double compare
         final double THRESHOLD = .001;
         double[] sides = triangle.getSides();
@@ -62,4 +75,17 @@ public class Main {
         return false;
     }
 
+    public static class triangleAreaComparator implements Comparator<Triangle> {
+        @Override
+        public int compare(Triangle o1, Triangle o2) {
+            return Double.compare(o1.getArea(), o2.getArea());
+        }
+    }
+
+    public static class trianglePerimeterComparator implements Comparator<Triangle> {
+        @Override
+        public int compare(Triangle o1, Triangle o2) {
+            return Double.compare(o1.getPerimeter(), o2.getPerimeter());
+        }
+    }
 }
