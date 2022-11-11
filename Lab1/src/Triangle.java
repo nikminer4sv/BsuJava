@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Triangle extends Figure {
     private Point[] points;
@@ -67,5 +68,19 @@ public class Triangle extends Figure {
                     Math.pow(points[(i + 1) % 3].getY() - points[i].getY(), 2));
         }
         return sides;
+    }
+
+    public static class TriangleAreaComparator implements Comparator<Triangle> {
+        @Override
+        public int compare(Triangle o1, Triangle o2) {
+            return Double.compare(o1.getArea(), o2.getArea());
+        }
+    }
+
+    public static class TrianglePerimeterComparator implements Comparator<Triangle> {
+        @Override
+        public int compare(Triangle o1, Triangle o2) {
+            return Double.compare(o1.getPerimeter(), o2.getPerimeter());
+        }
     }
 }
