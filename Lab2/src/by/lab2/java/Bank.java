@@ -8,8 +8,8 @@ import by.lab2.java.Exception.ClientNotFoundException;
 import java.util.ArrayList;
 
 public class Bank {
-    private ArrayList<Account> accounts;
-    private ArrayList<Client> clients;
+    private final ArrayList<Account> accounts;
+    private final ArrayList<Client> clients;
 
     private String title;
 
@@ -52,10 +52,7 @@ public class Bank {
     }
 
     public ArrayList<Client> getClients() throws CloneNotSupportedException {
-        ArrayList<Client> result = new ArrayList<Client>();
-        for (Client client : clients)
-            result.add((Client)client.clone());
-        return result;
+        return clients;
     }
 
     public void createCheckingAccount(int clientId, double money, double monthlyCashback) throws ClientNotFoundException {
@@ -72,5 +69,45 @@ public class Bank {
         if (money < 0)
             throw new IllegalArgumentException("Money can't be less than 0.");
         this.accounts.add(new SavingsAccount(clientId, money, isReplenished, isWithdrawed));
+    }
+
+    public ArrayList<Account> getAccounts() {
+        return this.accounts;
+    }
+
+    public ArrayList<Account> getClientAccounts(int id) {
+        ArrayList<Account> result = new ArrayList<Account>();
+        for (int i = 0; i < this.accounts.size(); i++)
+            if (this.accounts.get(i).getOwnerId() == id)
+                result.add(this.accounts.get(i));
+        return result;
+    }
+
+    public void blockAccount(int accountId) {
+        for (int i = 0; i < this.accounts.size(); i++)
+            if (this.accounts.get(i).getIdentifier() == accountId)
+                this.accounts.get(i).block();
+    }
+
+    public void unblockAccount(int accountId) {
+        for (int i = 0; i < this.accounts.size(); i++)
+            if (this.accounts.get(i).getIdentifier() == accountId)
+                this.accounts.get(i).unblock();
+    }
+
+    public void isBlockedAccount(int accountId) {
+        for (int i = 0; i < this.accounts.size(); i++)
+            if (this.accounts.get(i).getIdentifier() == accountId)
+                this.accounts.get(i).isBlocked();
+    }
+
+    public double getClientMoney(int clientId) {
+        double sum = 0;
+        ArrayList<Account> clientAccounts = getClientAccounts(clientId);
+        for (int i = 0; i < clientAccounts.size(); i++) {
+            if (!clientAccounts.get(i).isBlocked())
+                sum += clientAccounts.get(i).getMoney();
+        }
+        return sum;
     }
 }

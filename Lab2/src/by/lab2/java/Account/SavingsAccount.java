@@ -1,7 +1,5 @@
 package by.lab2.java.Account;
 
-import by.lab2.java.Account.Account;
-
 public class SavingsAccount extends Account {
 
     private boolean isReplenished;

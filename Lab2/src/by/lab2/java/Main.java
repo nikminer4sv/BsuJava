@@ -4,17 +4,26 @@ import by.lab2.java.Account.Account;
 import by.lab2.java.Account.CheckingAccount;
 import by.lab2.java.Exception.ClientNotFoundException;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Client client1 = new Client("Nikita", "Korotki", "Denisovich");
-        Account account = new CheckingAccount(client1.getIdentifier(), 100, 1.5);
+        Client client2 = new Client("Nikita2", "Korotki2", "Denisovich2");
         Bank bank = new Bank("Belarusbank");
         bank.addClient(client1);
+        bank.addClient(client2);
         try {
 
-            bank.createCheckingAccount(123, 100, 1.5);
-            boolean client = bank.isClientExists(123);
-            System.out.println();
+            bank.createCheckingAccount(0, 100, 1.5);
+            bank.createCheckingAccount(0, 300, 5.5);
+            bank.createSavingsAccount(0, 123, true, false);
+
+            bank.blockAccount(1);
+
+            System.out.println(bank.getClientMoney(0));
+
+            ArrayList<Account> accounts = bank.getClientAccounts(0);
 
         } catch (ClientNotFoundException e) {
             System.out.println("Invalid client id");

@@ -2,7 +2,7 @@ package by.lab2.java;
 
 import java.util.concurrent.atomic.AtomicLongArray;
 
-public class Client implements Cloneable {
+public class Client {
 
     private static int lastUserIdentifier = 0;
 
@@ -33,10 +33,5 @@ public class Client implements Cloneable {
 
     public int getIdentifier() {
         return this.identifier;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new Client(this.name, this.surname, this.patronymic);
     }
 }

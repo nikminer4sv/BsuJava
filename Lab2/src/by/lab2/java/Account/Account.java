@@ -1,25 +1,30 @@
 package by.lab2.java.Account;
 
 public abstract class Account {
+
+    private static int lastUserIdentifier = 0;
     protected int ownerId;
     protected double money;
 
     protected boolean isBlocked;
 
+    private final int identifier;
+
     public Account(int ownerId, double money) {
         this.ownerId = ownerId;
         this.money = money;
+        this.identifier = lastUserIdentifier++;
     }
 
     public boolean isBlocked() {
         return isBlocked;
     }
 
-    public void Block() {
+    public void block() {
         this.isBlocked = true;
     }
 
-    public void Unblock() {
+    public void unblock() {
         this.isBlocked = false;
     }
 
@@ -29,39 +34,11 @@ public abstract class Account {
 
     public int getOwnerId() {
         return this.ownerId;
+    }
+
+    public int getIdentifier() {
+        return identifier;
     }
 
     public abstract String getType();
-
-    /*
-    private int ownerId;
-    private double money;
-
-    private boolean isBlocked;
-
-    public Account(int ownerId, double money) {
-        this.ownerId = ownerId;
-        this.money = money;
-    }
-
-    public boolean isBlocked() {
-        return isBlocked;
-    }
-
-    public void Block() {
-        this.isBlocked = true;
-    }
-
-    public void Unblock() {
-        this.isBlocked = false;
-    }
-
-    public double getMoney() {
-        return this.money;
-    }
-
-    public int getOwnerId() {
-        return this.ownerId;
-    }
-     */
 }
