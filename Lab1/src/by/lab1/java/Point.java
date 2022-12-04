@@ -1,4 +1,4 @@
-package by.java.core;
+package by.lab1.java;
 
 public class Point implements Cloneable {
     private double x;

@@ -1,4 +1,4 @@
-package by.java.core;
+package by.lab1.java;
 
 public abstract class Figure {
     public abstract double getArea();
