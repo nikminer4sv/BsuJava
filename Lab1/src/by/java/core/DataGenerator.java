@@ -1,3 +1,5 @@
+package by.java.core;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,9 +16,9 @@ public class DataGenerator {
         return triangles;
     }
 
-    public static HashMap<TriangleTypes, ArrayList<Triangle>> generateTrianglesMap() {
-        HashMap<TriangleTypes, ArrayList<Triangle>> map = new HashMap<>();
-        for (var type : TriangleTypes.values())
+    public static HashMap<TriangleType, ArrayList<Triangle>> generateTrianglesMap() {
+        HashMap<TriangleType, ArrayList<Triangle>> map = new HashMap<>();
+        for (var type : TriangleType.values())
             map.put(type, new ArrayList<>());
         return map;
     }

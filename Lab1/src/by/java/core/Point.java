@@ -1,4 +1,4 @@
-import java.util.Objects;
+package by.java.core;
 
 public class Point implements Cloneable {
     private double x;
@@ -29,7 +29,7 @@ public class Point implements Cloneable {
 
     @Override
     public String toString() {
-        return "Point{" +
+        return "by.java.core.Point{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

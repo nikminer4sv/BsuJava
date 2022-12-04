@@ -1,3 +1,5 @@
+package by.java.core;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -44,7 +46,7 @@ public class Triangle extends Figure {
 
     @Override
     public String toString() {
-        return "Triangle{" +
+        return "by.java.core.Triangle{" +
                 "points=" + Arrays.toString(points) +
                 '}';
     }

@@ -1,16 +1,18 @@
+package by.java.core;
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        HashMap<TriangleTypes, ArrayList<Triangle>> sortedTriangles = DataGenerator.generateTrianglesMap();
+        HashMap<TriangleType, ArrayList<Triangle>> sortedTriangles = DataGenerator.generateTrianglesMap();
 
         ArrayList<Triangle> triangles = DataGenerator.generateBaseDataCollection();
         for (var element : triangles.get(0).getSides())
             System.out.println(element);
 
         for (Triangle triangle : triangles) {
-            TriangleTypes type = TriangleTypeDetector.detect(triangle);
+            TriangleType type = TriangleTypeDetector.detect(triangle);
             sortedTriangles.get(type).add(triangle);
         }
 
