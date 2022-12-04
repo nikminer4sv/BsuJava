@@ -2,6 +2,7 @@ package by.lab2.java;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello lab 2");
+        Client client1 = new Client("Nikita", "Korotki", "Denisovich");
+        Account account = new Account(client1.getIdentifier(), 100);
     }
 }
