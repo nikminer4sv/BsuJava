@@ -3,6 +3,7 @@ package by.lab2.java;
 import by.lab2.java.Account.Account;
 import by.lab2.java.Account.CheckingAccount;
 import by.lab2.java.Account.SavingsAccount;
+import by.lab2.java.Exception.AccountNotFoundException;
 import by.lab2.java.Exception.ClientNotFoundException;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class Bank {
         return false;
     }
 
-    public ArrayList<Client> getClients() throws CloneNotSupportedException {
+    public ArrayList<Client> getClients() {
         return clients;
     }
 
@@ -95,10 +96,11 @@ public class Bank {
                 this.accounts.get(i).unblock();
     }
 
-    public void isBlockedAccount(int accountId) {
+    public boolean isBlockedAccount(int accountId) throws AccountNotFoundException {
         for (int i = 0; i < this.accounts.size(); i++)
             if (this.accounts.get(i).getIdentifier() == accountId)
-                this.accounts.get(i).isBlocked();
+                return this.accounts.get(i).isBlocked();
+        throw new AccountNotFoundException(String.format("Account with id %d not found.", accountId));
     }
 
     public double getClientMoney(int clientId) {

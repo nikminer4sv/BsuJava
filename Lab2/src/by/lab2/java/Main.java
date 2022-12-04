@@ -1,10 +1,6 @@
 package by.lab2.java;
 
-import by.lab2.java.Account.Account;
-import by.lab2.java.Account.CheckingAccount;
 import by.lab2.java.Exception.ClientNotFoundException;
-
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,8 +18,6 @@ public class Main {
             bank.blockAccount(1);
 
             System.out.println(bank.getClientMoney(0));
-
-            ArrayList<Account> accounts = bank.getClientAccounts(0);
 
         } catch (ClientNotFoundException e) {
             System.out.println("Invalid client id");

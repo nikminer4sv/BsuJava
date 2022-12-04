@@ -32,6 +32,8 @@ public abstract class Account {
         return this.money;
     }
 
+    public void setMoney(double money) { this.money = money; }
+
     public int getOwnerId() {
         return this.ownerId;
     }
