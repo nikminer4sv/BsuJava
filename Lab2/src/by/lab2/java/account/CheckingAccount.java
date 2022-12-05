@@ -1,4 +1,4 @@
-package by.lab2.java.Account;
+package by.lab2.java.account;
 
 public class CheckingAccount extends Account {
     private double monthlyCashback;

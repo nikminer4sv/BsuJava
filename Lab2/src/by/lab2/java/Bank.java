@@ -1,10 +1,10 @@
 package by.lab2.java;
 
-import by.lab2.java.Account.Account;
-import by.lab2.java.Account.CheckingAccount;
-import by.lab2.java.Account.SavingsAccount;
-import by.lab2.java.Exception.AccountNotFoundException;
-import by.lab2.java.Exception.ClientNotFoundException;
+import by.lab2.java.account.Account;
+import by.lab2.java.account.CheckingAccount;
+import by.lab2.java.account.SavingsAccount;
+import by.lab2.java.exception.AccountNotFoundException;
+import by.lab2.java.exception.ClientNotFoundException;
 
 import java.util.ArrayList;
 
