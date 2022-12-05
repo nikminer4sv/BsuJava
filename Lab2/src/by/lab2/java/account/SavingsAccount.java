@@ -11,6 +11,22 @@ public class SavingsAccount extends Account {
         this.isWithdrawed = isWithdrawed;
     }
 
+    public boolean isReplenished() {
+        return isReplenished;
+    }
+
+    public void setReplenished(boolean replenished) {
+        isReplenished = replenished;
+    }
+
+    public boolean isWithdrawed() {
+        return isWithdrawed;
+    }
+
+    public void setWithdrawed(boolean withdrawed) {
+        isWithdrawed = withdrawed;
+    }
+
     @Override
     public String getType() {
         return "SavingsAccount";

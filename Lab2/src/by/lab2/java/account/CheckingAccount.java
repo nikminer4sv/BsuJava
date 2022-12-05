@@ -7,6 +7,14 @@ public class CheckingAccount extends Account {
         this.monthlyCashback = monthlyCashback;
     }
 
+    public double getMonthlyCashback() {
+        return monthlyCashback;
+    }
+
+    public void setMonthlyCashback(double monthlyCashback) {
+        this.monthlyCashback = monthlyCashback;
+    }
+
     @Override
     public String getType() {
         return "CheckingAccount";
